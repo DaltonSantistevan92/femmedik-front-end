@@ -1,0 +1,81 @@
+<!-- <p>login works!</p> -->
+
+<main class="main-content  mt-0">
+    <section>
+        <div class="page-header min-vh-75">
+            <div class="container">
+
+                <div class="text-center mt-6">
+                    <h1 class="opacity-5 text-dark">
+                        <i class="fa fa-user-md text-primary"></i>
+                        <span class="letra bg-transparent text-purple"> Obst. Kerly Santistevan </span>
+                    </h1>
+                </div>
+
+                <div class="row h">
+                    <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
+                        <div class="card card-plain mt-5">
+
+                            <div class="card-header pb-0 text-left bg-transparent text-center">
+                                <h3 class="font-weight-bolder text-primary">Bienvenido</h3>
+                            </div>
+
+                            <form [formGroup]="formulario" (ngSubmit)="login()">
+                                <div class="card-body">
+                                    <label>Correo</label>
+                                    <div class="mb-2">
+                                        <input type="email" class="form-control" formControlName="email" placeholder="Ingrese su correo"
+                                        [ngClass]="(submitted && f['email'].errors) || (f['email'].touched || f['email'].dirty) ? 'is-invalid': ''"
+                                        [ngClass]="f['email'].valid ? 'is-valid': ''">
+
+                                        <div *ngIf="submitted || (f['email'].touched || f['email'].dirty)">
+                                            <small *ngIf="f['email'].errors?.['required']" class="text-danger"> Correo es requerido </small>
+                                            <small *ngIf="f['email'].errors?.['email']" class="text-danger"> Formato de correo es incorrecto !! </small>
+                                        </div>
+                                    </div>
+
+                                    <label>Contraseña</label>
+                                    <div class="mb-3">
+                                        <input id="txtPassword" type="password" class="form-control" formControlName="password" placeholder="Ingrese su contraseña"
+                                        [ngClass]="(submitted && f['password'].errors) || (f['password'].touched || f['password'].dirty) ? 'is-invalid': ''"
+                                        [ngClass]="f['password'].valid ? 'is-valid' : ''">
+
+                                        <div *ngIf="submitted || (f['password'].touched || f['password'].dirty)">
+                                            <small *ngIf="f['password'].errors?.['required']" class="text-danger"> Contraseña es requerido </small>
+                                            <small *ngIf="f['password'].errors?.['minlength']" class="text-danger"> Mínimo 4 caracteres </small>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" (click)="showPass()" checked="">
+                                        <label class="custom-control-label">Mostrar Contraseña</label>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit"
+                                            class="d-flex btn bg-gradient-primary w-100 mt-4 mb-0 justify-content-center align-items-center"
+                                            [disabled]="formulario.invalid || spinnerButton">
+                                            <mat-spinner *ngIf="spinnerButton" [diameter]="20" color="accent"></mat-spinner>
+                                            <span style="margin-left: 5px;">Ingresar</span>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="oblique position-absolute top-15 h-100 w-60 d-md-block d-none">
+                            <div class="center bg-cover position-absolute fixed-top ms-auto h-100 w-100">
+                                <img src="../assets/misImagen/fmk.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
