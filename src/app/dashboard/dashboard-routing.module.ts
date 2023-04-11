@@ -10,6 +10,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'admin-dash', pathMatch: 'full' },
       { path: 'admin-dash', component: AdminDashComponent, canActivate: [SesionGuardGuard] }, //contenido
+      { path: 'gestion-usuario', loadChildren: () => import('./../usuario-module/usuario-module.module').then(m => m.UsuarioModuleModule) },
+      { path: 'gestion-horario', loadChildren: () => import('./../gestion-horario/gestion-horario.module').then(m => m.GestionHorarioModule) }
     ],
   }
 ];

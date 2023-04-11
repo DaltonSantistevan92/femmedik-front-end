@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Menu } from '../interfaces/menu';
 import { UserService } from '../../auth/services/user.service';
-import { MenuService } from '../services/menu.service';
-import { Data } from '../../auth/interfaces/user';
+import { MenuService } from './../../servicios/menu.service';
 import { ToolService } from '../../servicios/tool.service';
 
 @Component({
@@ -33,23 +32,23 @@ export class MenuComponent implements OnInit {
   }
 
   changeCabecera(){
-    let localStorageUsuario: Data = JSON.parse(localStorage.getItem('usuario')!);
+    let local = this._ts.returnLocalStorage();
 
-    if (localStorageUsuario != null) {
-      this.nombreCompleto = `${localStorageUsuario.persona.nombre} ${localStorageUsuario.persona.apellido}`; 
-      this.cargo = `${localStorageUsuario.rol.cargo}`;
-      this.img = `${localStorageUsuario.imagen}`;
+    if (local != null) {
+      this.nombreCompleto = `${local.persona.nombre} ${local.persona.apellido}`; 
+      this.cargo = `${local.rol.cargo}`;
+      this.img = `${local.imagen}`;
       this.img = this._ts.mostrarArchivo('usuarios', this.img);
-      this.rol_id = localStorageUsuario.rol_id;
+      this.rol_id = local.rol_id;
     } else {
       console.log('no hay usuario en el local');
     }
   }
 
   changeMenu(){
-    this._ms.getMenu(this.rol_id).subscribe( res => {
+    this._ms.getMenu(this.rol_id).subscribe( res => { 
       if (res.status) {
-        this.menus = res.datos;
+        this.menus = res.menu;
       } else {
         console.log('No hay menus');
       }
@@ -81,5 +80,6 @@ export class MenuComponent implements OnInit {
       }
     });
   }
+
 
 }

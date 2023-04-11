@@ -18,8 +18,6 @@ export class DashService {
   constructor(private _bs: BaseService, private http: HttpClient) {
     this.countUsers();
     this.countRols();
-
-  
   }
 
   countUsers(){

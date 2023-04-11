@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { HttpClient } from '@angular/common/http';
+import { Datos } from '../auth/interfaces/user';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,7 @@ export class ToolService {
     return url;
   }
 
-  subirArchivo(files: Array<File>, name:string, url:string){
+  subirArchivo(files: Array<File>, name:string, url:string){//saveImgUser
     let urlCompleta = `${this._bs.getApi()}/${url}`;
     let formdata:any = new FormData();
     
@@ -38,4 +40,12 @@ export class ToolService {
     }
    return this.http.post(urlCompleta, formdata);
   }
+
+
+  returnLocalStorage(): any{
+    let dataLocal: Datos = JSON.parse(localStorage.getItem('usuario')!);
+    return dataLocal;
+  }
+
+  
 }

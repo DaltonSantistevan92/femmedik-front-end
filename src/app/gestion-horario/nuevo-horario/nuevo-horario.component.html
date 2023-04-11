@@ -1,0 +1,98 @@
+<!-- mis rutas -->
+<!-- <router-outlet></router-outlet> -->
+
+<!-- <p>nuevo-horario works!</p> -->
+
+
+
+<div class="container-fluid mt-6">
+    <div class="card mt-3">
+
+        <div class="card-header bg-dark">
+            <span class="text-white">Gestión Horario</span>
+        </div>
+
+        <div class="card-body">
+            <form [formGroup]="formulario" (ngSubmit)="guardarDatos()">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xl-6">
+                        <div class="p-1">
+                            <div class="row gx-4">
+                                <div class="col-auto">
+                                    <div class="avatar avatar-xl position-relative">
+                                        <img src="../../../assets/img/kerly.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                                    </div>
+                                </div>
+                                <div class="col-auto my-auto">
+                                    <div class="h-100">
+                                        <h5 class="mb-1"> Obstetra </h5>
+                                        <p class="mb-0 font-weight-bold text-sm"> Kerly Santistevan </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-6">
+                        <div class="p-1">
+                            <label class="text-dark">Intervalo:</label>
+                            <select formControlName="intervalo" class="form-control">
+                                <option value="0">Selecione un Intervalo</option>
+                                <option *ngFor="let i of intervalo" [value]="i.id">{{i.minutos}}</option>
+                            </select>
+
+                            <div *ngIf="submitted" class="-mt-12">
+                                <small class="text-danger">Seleccione un intervalo</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-12 col-xl-6">
+                        <div class="p-1">
+                            <label class="text-dark">Hora Inicio:</label>
+                            <input type="time" formControlName="h_entrada" class="form-control"
+                                [ngClass]="(submitted && f['h_entrada'].errors) || (f['h_entrada'].touched || f['h_entrada'].dirty) ? 'is-invalid': ''"
+                                [ngClass]="f['h_entrada'].valid ? 'is-valid' : ''">
+
+                            <div *ngIf="submitted || (f['h_entrada'].touched || f['h_entrada'].dirty)">
+                                <small *ngIf="f['h_entrada'].errors?.['required']" class="text-danger">
+                                    Hora de inicio es requerido
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-12 col-xl-6">
+                        <div class="p-1">
+                            <label class="text-dark">Hora Fin:</label>
+                            <input type="time" formControlName="h_salida" class="form-control"
+                                [ngClass]="(submitted && f['h_salida'].errors) || (f['h_salida'].touched || f['h_salida'].dirty) ? 'is-invalid': ''"
+                                [ngClass]="f['h_salida'].valid ? 'is-valid' : ''">
+
+                            <div *ngIf="submitted || (f['h_salida'].touched || f['h_salida'].dirty)">
+                                <small *ngIf="f['h_salida'].errors?.['required']" class="text-danger">
+                                    Hora fin es requerido
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-2 col-12">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <button type="submit" [disabled]="formulario.invalid || okButton"
+                                class="btn bg-gradient-primary btn-sm">
+                                <div class="row">
+                                    <mat-icon *ngIf="okButton" style="margin-right: 7px;">check</mat-icon>
+                                    <mat-icon *ngIf="!okButton" style="margin-right: 20px;"></mat-icon>
+
+                                    <div style="margin-top: -20px;margin-right: 7px;">Guardar</div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>

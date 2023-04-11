@@ -30,6 +30,9 @@ import { AdminModule } from '../admin/admin.module';
     MatCardModule,
     MatMenuModule,
     AdminModule,
+  ],
+  exports: [
+   MenuComponent
   ]
 })
 export class DashboardModule { }

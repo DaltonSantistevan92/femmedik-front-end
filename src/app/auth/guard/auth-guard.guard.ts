@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Data } from '../interfaces/user';
+import { Datos } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class AuthGuardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      let localStorageUsuario: Data = JSON.parse(localStorage.getItem('usuario')!);
+      let localStorageUsuario: Datos = JSON.parse(localStorage.getItem('usuario')!);
       //console.log('estamos en auth guard', localStorageUsuario);
       
       if (localStorageUsuario != null) {

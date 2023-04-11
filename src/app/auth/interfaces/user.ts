@@ -3,11 +3,11 @@
  export interface IUser {
   status: boolean;
   message: string;
-  data: Data;
+  data: Datos;
   token: string;
 }
 
-export interface Data {
+export interface Datos {
   id: number;
   rol_id: number;
   persona_id: number;
@@ -23,24 +23,24 @@ export interface Data {
 }
 
 export interface Persona {
-  id: number;
+  id?: number;
   cedula: string;
   nombre: string;
   apellido: string;
   celular: string;
   telefono?: any;
   direccion: string;
-  estado: string;
-  created_at: string;
-  updated_at: string;
+  estado?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface Rol {
-  id: number;
+  id?: number;
   cargo: string;
-  estado: string;
-  created_at: string;
-  updated_at: string;
+  estado?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 

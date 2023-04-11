@@ -18,7 +18,7 @@ export class AuthInterceptorService {
         setHeaders:{"Authorization":`Bearer ${token}`,
                     "Accept":"application/json",
                     "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Methods": "POST, GET, PUT",
+                    "Access-Control-Allow-Methods": "POST, GET, PUT, DELETE",
                     "Access-Control-Allow-Headers": "Authorization, Origin, Content-Type, X-CSRF-Token"}
       });
     }

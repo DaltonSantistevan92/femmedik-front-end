@@ -1,0 +1,13 @@
+<!-- <p>dialog-elements works!</p>
+ -->
+ <h1 mat-dialog-title>¿Está seguro de eliminar el {{title | titlecase }}?</h1>
+<div mat-dialog-actions>
+    <div class="row col-md-12 d-flex justify-content-center">
+        <div class="col-md-6 d-flex justify-content-end">
+            <button mat-button (click)="cerrar()" class="btn bg-gradient-secondary">Cerrar</button>
+        </div>
+        <div class="col-md-6 d-flex justify-content-start ">
+            <button mat-button (click)="eliminar()" mat-dialog-close type="button" class="btn bg-gradient-primary">Eliminar</button>
+        </div>
+    </div>
+</div>

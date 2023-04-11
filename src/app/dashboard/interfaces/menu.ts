@@ -3,7 +3,7 @@
 export interface IM {
   status: boolean; 
   mensaje: string; 
-  datos: Menu[];
+  menu: Menu[];
 }
 
 

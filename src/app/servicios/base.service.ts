@@ -10,7 +10,6 @@ export class BaseService {
 
   constructor() { }
 
-
   getApi(){
     return this.api;
   }

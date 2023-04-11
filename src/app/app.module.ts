@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,17 +14,13 @@ import { CookieService } from 'ngx-cookie-service';
 import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-//guards
-import { AuthGuardGuard } from './auth/guard/auth-guard.guard';
-import { SesionGuardGuard } from './dashboard/guard/sesion-guard.guard';
-
-
+import { DialogElementsComponent } from './components/dialog-elements/dialog-elements.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogElementsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +31,6 @@ import { SesionGuardGuard } from './dashboard/guard/sesion-guard.guard';
   ],
   providers: [
     CookieService,
-    //AuthGuardGuard,
-    //SesionGuardGuard,
     { provide:HTTP_INTERCEPTORS, useClass:AuthInterceptorService, multi:true }
   ],
   bootstrap: [AppComponent]
